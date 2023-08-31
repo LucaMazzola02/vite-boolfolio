@@ -4,22 +4,20 @@
             Projects:
         </h1>
         <div class="projects">
-            <div class="single-project" v-for="project in projects">
+            <div :style="'border: 2px solid' + project.type.color + ';'" class="single-project" v-for="project in projects">
                 <h2>
                     {{ project.title }}
                 </h2>
                 <h4 :style="'color:' + project.type.color + ';'">
-                    Category: {{ project.type.name }}
+                    Type: {{ project.type.name }}
                 </h4>
-                <h5>
-                    {{ project.slug }}
-                </h5>
-                <h6>
-                    <span v-for="technology in project.technologies" :style="'color:' + technology.color + ';'">#{{ technology.name }} </span>
-                </h6>
+                
                 <p>
                     {{ project.content.substr(0, 250) }}
                 </p>
+                <h5>
+                    <span v-for="technology in project.technologies">#{{ technology.name }} </span>
+                </h5>
             </div>
         </div>
     </div>
@@ -72,21 +70,23 @@ export default {
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
+        gap: 1rem;
 
         div.single-project{
-            width: calc((100% / 2) - 1rem);
+            width: calc((100% / 2) - 3.5rem);
+            height: 20rem;
             border-radius: 1rem;
             padding: 1rem;
-            margin-right: 1rem;
             background-color: #fff;
             color: black;
             margin-bottom: 2rem;
+            font-family: cursive;
 
             *{
-                margin-bottom: 1rem;
+                margin-bottom: .75rem;
             }
 
-            h6 span{
+            h5 span{
                 margin-right: 1rem;
             }
 
